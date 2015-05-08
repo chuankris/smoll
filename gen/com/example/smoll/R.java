@@ -132,6 +132,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          */
         public static final int AppTheme=0x7f070001;
         public static final int SwipeBackLayout=0x7f070002;
+        public static final int test=0x7f070004;
     }
     public static final class styleable {
         /** Attributes that can be used with a SwipeBackLayout.

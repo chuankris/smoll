@@ -40,7 +40,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 		mKeyTrackingMode = getString(R.string.key_tracking_mode);
 		mSwipeBackLayout = getSwipeBackLayout();
 
-		mTrackingModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+	/*	mTrackingModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 		{
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -60,10 +60,11 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 				default:
 					edgeFlag = SwipeBackLayout.EDGE_ALL;
 				}
-				mSwipeBackLayout.setEdgeTrackingEnabled(edgeFlag);
 				saveTrackingMode(edgeFlag);
 			}
 		});
+		*/
+		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_RIGHT);
 		mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener()
 		{
 			@Override
@@ -98,7 +99,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 		PreferenceUtils.setPrefInt(getApplicationContext(), mKeyTrackingMode, flag);
 	}
 
-	private void restoreTrackingMode()
+/*	private void restoreTrackingMode()
 	{
 		int flag = PreferenceUtils.getPrefInt(getApplicationContext(), mKeyTrackingMode, SwipeBackLayout.EDGE_LEFT);
 		mSwipeBackLayout.setEdgeTrackingEnabled(flag);
@@ -117,7 +118,7 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 			mTrackingModeGroup.check(R.id.mode_all);
 			break;
 		}
-	}
+	}*/
 
 	private void changeActionBarColor()
 	{

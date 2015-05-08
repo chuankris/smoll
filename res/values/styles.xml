@@ -20,8 +20,12 @@
         <item name="shadow_bottom">@drawable/shadow_bottom</item>
     </style>
 
-    <style name="ActivityTheme" parent="android:Theme.Light.NoTitleBar">
+    <style name="ActivityTheme" parent="android:style/Theme.Translucent">
         <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="test" parent="android:style/Theme.Translucent">
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
 </resources>
