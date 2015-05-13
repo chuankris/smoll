@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class SwipeBackLayout extends FrameLayout
 	/**
 	 * Edge flag set indicating all edges should be affected.
 	 */
-	public static final int EDGE_ALL = EDGE_LEFT | EDGE_RIGHT | EDGE_BOTTOM;
+	public static final int EDGE_ALL = EDGE_LEFT | EDGE_RIGHT;
 
 	/**
 	 * A view is not currently being dragged or animating as a result of a
@@ -596,11 +597,18 @@ public class SwipeBackLayout extends FrameLayout
 					listener.onScrollOverThreshold();
 				}
 			}
-
 			if (mScrollPercent >= 1)
 			{
 				if (!mActivity.isFinishing())
-					mActivity.finish();
+					//todo qiuxuechuan
+					if (mTrackingEdge == EDGE_LEFT)
+					{
+						mActivity.finish();
+					}
+					else
+					{
+						
+					}
 			}
 		}
 

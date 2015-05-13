@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends SwipeBackActivity implements View.OnClickListener
 {
@@ -40,48 +41,51 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 		mKeyTrackingMode = getString(R.string.key_tracking_mode);
 		mSwipeBackLayout = getSwipeBackLayout();
 
-	/*	mTrackingModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-		{
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId)
+		/*	mTrackingModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
 			{
-				int edgeFlag;
-				switch (checkedId)
+				@Override
+				public void onCheckedChanged(RadioGroup group, int checkedId)
 				{
-				case R.id.mode_left:
-					edgeFlag = SwipeBackLayout.EDGE_LEFT;
-					break;
-				case R.id.mode_right:
-					edgeFlag = SwipeBackLayout.EDGE_RIGHT;
-					break;
-				case R.id.mode_bottom:
-					edgeFlag = SwipeBackLayout.EDGE_BOTTOM;
-					break;
-				default:
-					edgeFlag = SwipeBackLayout.EDGE_ALL;
+					int edgeFlag;
+					switch (checkedId)
+					{
+					case R.id.mode_left:
+						edgeFlag = SwipeBackLayout.EDGE_LEFT;
+						break;
+					case R.id.mode_right:
+						edgeFlag = SwipeBackLayout.EDGE_RIGHT;
+						break;
+					case R.id.mode_bottom:
+						edgeFlag = SwipeBackLayout.EDGE_BOTTOM;
+						break;
+					default:
+						edgeFlag = SwipeBackLayout.EDGE_ALL;
+					}
+					
 				}
-				saveTrackingMode(edgeFlag);
-			}
-		});
-		*/
-		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_RIGHT);
+			});
+			*/
+		//mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_RIGHT);
+		//mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+		mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_ALL);
 		mSwipeBackLayout.addSwipeListener(new SwipeBackLayout.SwipeListener()
 		{
 			@Override
 			public void onScrollStateChange(int state, float scrollPercent)
 			{
-
 			}
 
 			@Override
 			public void onEdgeTouch(int edgeFlag)
 			{
 				vibrate(VIBRATE_DURATION);
+
 			}
 
 			@Override
 			public void onScrollOverThreshold()
 			{
+				Toast.makeText(getApplicationContext(), "hi", Toast.LENGTH_LONG).show();
 				vibrate(VIBRATE_DURATION);
 			}
 		});
@@ -99,26 +103,26 @@ public class MainActivity extends SwipeBackActivity implements View.OnClickListe
 		PreferenceUtils.setPrefInt(getApplicationContext(), mKeyTrackingMode, flag);
 	}
 
-/*	private void restoreTrackingMode()
-	{
-		int flag = PreferenceUtils.getPrefInt(getApplicationContext(), mKeyTrackingMode, SwipeBackLayout.EDGE_LEFT);
-		mSwipeBackLayout.setEdgeTrackingEnabled(flag);
-		switch (flag)
+	/*	private void restoreTrackingMode()
 		{
-		case SwipeBackLayout.EDGE_LEFT:
-			mTrackingModeGroup.check(R.id.mode_left);
-			break;
-		case SwipeBackLayout.EDGE_RIGHT:
-			mTrackingModeGroup.check(R.id.mode_right);
-			break;
-		case SwipeBackLayout.EDGE_BOTTOM:
-			mTrackingModeGroup.check(R.id.mode_bottom);
-			break;
-		case SwipeBackLayout.EDGE_ALL:
-			mTrackingModeGroup.check(R.id.mode_all);
-			break;
-		}
-	}*/
+			int flag = PreferenceUtils.getPrefInt(getApplicationContext(), mKeyTrackingMode, SwipeBackLayout.EDGE_LEFT);
+			mSwipeBackLayout.setEdgeTrackingEnabled(flag);
+			switch (flag)
+			{
+			case SwipeBackLayout.EDGE_LEFT:
+				mTrackingModeGroup.check(R.id.mode_left);
+				break;
+			case SwipeBackLayout.EDGE_RIGHT:
+				mTrackingModeGroup.check(R.id.mode_right);
+				break;
+			case SwipeBackLayout.EDGE_BOTTOM:
+				mTrackingModeGroup.check(R.id.mode_bottom);
+				break;
+			case SwipeBackLayout.EDGE_ALL:
+				mTrackingModeGroup.check(R.id.mode_all);
+				break;
+			}
+		}*/
 
 	private void changeActionBarColor()
 	{
